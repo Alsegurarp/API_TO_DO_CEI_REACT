@@ -1,4 +1,4 @@
-node_modules
-pruebas
+node_modules/
+pruebas/
 .env
 index.html
