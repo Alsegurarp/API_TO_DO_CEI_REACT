@@ -35,7 +35,14 @@ app.post("/tareas/nueva", async (peticion,respuesta, siguiente) => {
     let {tarea} = peticion.body;
 
     if(!tarea || tarea.trim() == ""){
-        return
+        return siguiente(true);
+    }
+    try{
+        let id = await crearTarea(tarea);
+        respuesta.json({id});
+    }catch(error){
+        respuesta.status(500);
+        respuesta.json({error : "error en el servidor"})
     }
 })
 
